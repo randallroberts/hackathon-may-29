@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import restImg from '../1.png';
 import './components.scss';
 
 class App extends Component {
@@ -32,7 +33,7 @@ class App extends Component {
                 </div>
                 
             </header>
-        <div className="header-fill"></div>
+        <div><img className="header-fill" src={restImg} alt="restaurant sign" /></div>
     </div>
     );
   }
