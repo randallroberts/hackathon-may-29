@@ -4,6 +4,7 @@ import SimpleMap from './components/SimpleMap';
 import Nav from './components/Nav';
 import About from './components/About';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 class App extends Component {
   
@@ -17,6 +18,7 @@ class App extends Component {
           <SimpleMap />
         </div>
         <Contact />
+        <Footer />
       </div>
     );
   }
