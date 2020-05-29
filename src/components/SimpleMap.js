@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
+import restaurantData from '../filteredRestaurants.json';
+import MarkerIcon from '../forkAndKnife.png'
  
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <div className="marker"><img width="20" src={MarkerIcon} /></div>;
 
 class SimpleMap extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-        restaurants: []
-    }
+    // this.state = {
+    //     restaurants: JSON.parse(restaurantData)
+    // }
 
     this.yelpAPIkey = "Bearer aY90oKFY8U9mMV4FQElCJWM9FfnGUAL8g6YHTqmHz_YTAKLSyLWu8Cm5_fZWnJkJ-ilP44m5Q6I0wGb7-AfAynWwbCJdvLDQ9z78g_ih_B2Yh212uB0-NktXNxXRXnYx";
     this.yelpClientID = "ibePwniubhz5jzxvMc8xZA";
@@ -21,12 +23,16 @@ class SimpleMap extends Component {
       lat: 43.68,
       lng: -79.48
     },
-    zoom: 11
+    zoom: 12
   };
 
   componentDidMount() {
+
+    console.log(restaurantData);
     //this.getRestaurants();
   }
+    
+  
 
   getRestaurants () {
 
@@ -86,16 +92,24 @@ class SimpleMap extends Component {
 
   getMarkers() {
 
-    if (this.state.restaurants) {
-    this.state.restaurants.forEach(data => {
-      
-      return (
-        <AnyReactComponent
-          lat={data.restaurant.location.latitude}
-          lng={data.restaurant.location.longitude}
-          text={data.restaurant.name}
-       />
-      )
+    // return <AnyReactComponent
+    //   lat={restaurantData[0].latitude}
+    //   lng={restaurantData[0].longitude}
+    //   text={restaurantData[0].name}
+    // />
+
+    if (restaurantData) {
+      return restaurantData.splice(0,50).map((restaurant, key) => {
+        
+        return (
+          <AnyReactComponent
+            key={key}
+            lat={restaurant.latitude}
+            lng={restaurant.longitude}
+            text={restaurant.name}
+          />
+          
+        )
       })
     }
   }

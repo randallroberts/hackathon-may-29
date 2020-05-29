@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import SimpleMap from './components/SimpleMap';
+import Nav from './components/Nav';
+import About from './components/About';
 
 class App extends Component {
   
@@ -8,10 +10,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header>
-          <h1>Team Pineapple On Pizza (POP)</h1>
-        </header>
-        <SimpleMap />
+        <Nav />
+        <About />
+        <div className="map">
+          <SimpleMap />
+        </div>
       </div>
     );
   }
